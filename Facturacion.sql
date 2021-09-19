@@ -22,10 +22,14 @@ BEGIN
 	FOR i IN 1..array_upper(inVehiculoID,1)
 	LOOP
 		varStock:=(SELECT cantidad FROM Vehiculos WHERE Vehiculos.ID = inVehiculoID[i]);
-		IF varStock > 0 THEN
+		IF (varStock-cantidad) > 0 THEN
 			varPrecio:=(SELECT precio FROM Vehiculos WHERE Vehiculos.ID = inVehiculoID[i]);
 			INSERT INTO Detalles(facturaID, vehiculoID, cantidad, subtotal)
 			VALUES(varFacturaID,inVehiculoID[i],inCantidad[i],(varPrecio*inCantidad[i]));
+			
+			UPDATE Vehiculos 
+			SET Vehiculos.cantidad = Vehiculos.cantidad-cantidad
+			WHERE Vehiculos.ID = inVehiculoID[i];
 		ELSE
         	RAISE EXCEPTION 'No hay stock';
     	END IF;
