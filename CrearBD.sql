@@ -1,5 +1,5 @@
 CREATE TABLE Clientes
-(ID PRIMARY KEY,
+(ID INT PRIMARY KEY,
  nombre VARCHAR(50),
  apellidos VARCHAR(50),
  fechaNacimiento DATE,
