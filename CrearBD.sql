@@ -1,8 +1,9 @@
 CREATE TABLE Clientes
-(ID SERIAL NOT NULL PRIMARY KEY,
+(ID PRIMARY KEY,
  nombre VARCHAR(50),
  apellidos VARCHAR(50),
- fechaNacimiento DATE
+ fechaNacimiento DATE,
+ activo BIT
 );
 
 CREATE TABLE Vehiculos
@@ -11,7 +12,9 @@ CREATE TABLE Vehiculos
  modelo VARCHAR(50),
  color VARCHAR(50),
  capacidad INT,
- precio DECIMAL(10,2)
+ precio DECIMAL(10,2),
+ cantidad INT,
+ activo BIT
 );
 
 CREATE TABLE Telefonos
@@ -64,7 +67,7 @@ CREATE TABLE TipoCombustible
 CREATE TABLE Automoviles
 (TipoAutomovilID INT,
  TipoCombustibleID INT,
- kilometraje DECIMAL(10,2),
+ capacidadTanque DECIMAL(10,2),
  FOREIGN KEY(TipoAutomovilID) REFERENCES TipoAutomoviles(ID),
  FOREIGN KEY(TipoCombustibleID) REFERENCES TipoCombustible(ID)
 )INHERITS (Vehiculos);
@@ -78,6 +81,7 @@ CREATE TABLE Helicopteros
 (TipoHelicopteroID INT,
  DuracionCombustibleMinutos INT,
  AltitudMaxima INT,
+ capacidadTanque DECIMAL(10,2),
  FOREIGN KEY(TipoHelicopteroID) REFERENCES TipoHelicopteros(ID)
 )INHERITS (Vehiculos);
 

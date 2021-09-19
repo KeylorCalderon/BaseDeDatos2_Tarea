@@ -37,14 +37,14 @@ AS $$
             raise EXCEPTION 'Valor nulo'
 
         ELSIF tipoDeVehiculo = 3 THEN --AUTOMOVIL
-            INSERT INTO Automoviles(marca,modelo,color,capacidad,precio,cantidad,activo,tipoAutomovilID,tipoCombustible,capacidadTanque)
+            INSERT INTO Automoviles(marca,modelo,color,capacidad,precio,cantidad,activo,tipoAutomovilID,tipoCombustibleID,capacidadTanque)
             VALUES(marca,modelo,color,capacidad,precio,cantidad,1,tipoAutomovilID,tipoCombustible,capacidadTanque)
 
             EXCEPTION when null_value_not_allowed THEN 
             raise EXCEPTION 'Valor nulo'
 
         ELSIF tipoDeVehiculo = 4 THEN --HELICOPTERO
-            INSERT INTO Helicpteros(marca,modelo,color,capacidad,precio,cantidad,activo,duracionCombustibleMinutos,altitudMaxima,tipoHelicopteroID,capacidadTanque)
+            INSERT INTO Helicopteros(marca,modelo,color,capacidad,precio,cantidad,activo,duracionCombustibleMinutos,altitudMaxima,tipoHelicopteroID,capacidadTanque)
             VALUES(marca,modelo,color,capacidad,precio,cantidad,1,duracionCombustibleMinutos,altitudMaxima,tipoHelicopteroID,capacidadTanque)
 
             EXCEPTION when null_value_not_allowed THEN 
